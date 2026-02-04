@@ -1,28 +1,28 @@
 // calculator program
 
-const display = document.getElementById("display");
+// const display = document.getElementById("display");
 
-function appendToDisplay(input){
-    display.value += input;
-}
+// function appendToDisplay(input){
+//     display.value += input;
+// }
 
-function clearDisplay(){
-    display.value = "";
-}
+// function clearDisplay(){
+//     display.value = "";
+// }
 
-function calculate(){
+// function calculate(){
 
-    try{
-        display.value = eval(display.value);
-    }
-    catch(error){
-        display.value = "Error";
-    }
-}
+//     try{
+//         display.value = eval(display.value);
+//     }
+//     catch(error){
+//         display.value = "Error";
+//     }
+// }
 
-function clearAppendToDisplay() {
-    display.value = display.value.slice(0, -1);
-}
+// function clearAppendToDisplay() {
+//     display.value = display.value.slice(0, -1);
+// }
 
 /*MORE BUTTONS*/
 
@@ -38,4 +38,39 @@ function sqrt() {
     } catch {
         display.value = "Error";
     }
+}
+
+
+// display scroll
+
+function appendToDisplay(input){
+    display.value += input;
+    display.scrollLeft = display.scrollWidth;
+}
+
+const display = document.getElementById("display");
+
+function appendToDisplay(input){
+    display.value += input;
+    display.scrollLeft = display.scrollWidth;
+}
+
+function clearDisplay(){
+    display.value = "";
+    display.scrollLeft = 0;
+}
+
+function calculate(){
+    try{
+        display.value = eval(display.value);
+        display.scrollLeft = display.scrollWidth;
+    }
+    catch(error){
+        display.value = "Error";
+    }
+}
+
+function clearAppendToDisplay() {
+    display.value = display.value.slice(0, -1);
+    display.scrollLeft = display.scrollWidth;
 }

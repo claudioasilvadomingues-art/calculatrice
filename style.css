@@ -23,6 +23,9 @@ body {
     border: none;
     background-color: hsl(0, 0%, 20%);
     color: white;
+    white-space: nowrap;
+    overflow: hidden;   
+
 }
 #keys{
     display: grid;
@@ -65,10 +68,10 @@ button:active{
 /*MORE BUTTONS  */
 
 #advanced-keys {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+     display: grid;
     gap: 5px;
     margin-top: 10px;
+    margin-left: 5px;
 }
 
 .hidden {
