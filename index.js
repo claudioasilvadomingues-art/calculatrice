@@ -1,37 +1,45 @@
-// calculator program
+// display
+const display = document.getElementById("display");
 
-// const display = document.getElementById("display");
+// affichage + scroll
+function appendToDisplay(input){
+    if (display.value === "0") {
+        display.value = input;
+    } else {
+        display.value += input;
+    }
+    display.scrollLeft = display.scrollWidth;
+}
 
-// function appendToDisplay(input){
-//     display.value += input;
-// }
+function clearDisplay(){
+    display.value = "0";
+    display.scrollLeft = 0;
+}
 
-// function clearDisplay(){
-//     display.value = "";
-// }
+function clearAppendToDisplay() {
+    display.value = display.value.slice(0, -1);
+    if (display.value === "") display.value = "0";
+    display.scrollLeft = display.scrollWidth;
+}
 
-// function calculate(){
+function calculate(){
+    try{
+        display.value = eval(display.value);
+        display.scrollLeft = display.scrollWidth;
+    }
+    catch{
+        display.value = "Error";
+    }
+}
 
-//     try{
-//         display.value = eval(display.value);
-//     }
-//     catch(error){
-//         display.value = "Error";
-//     }
-// }
-
-// function clearAppendToDisplay() {
-//     display.value = display.value.slice(0, -1);
-// }
-
-/*MORE BUTTONS*/
-
+// menu more
 function toggleAdvanced() {
     document
         .getElementById("advanced-keys")
         .classList.toggle("hidden");
 }
 
+// racine carrée
 function sqrt() {
     try {
         display.value = Math.sqrt(eval(display.value));
@@ -40,50 +48,23 @@ function sqrt() {
     }
 }
 
-
-// display scroll
-
-function appendToDisplay(input){
-    display.value += input;
-    display.scrollLeft = display.scrollWidth;
-}
-
-const display = document.getElementById("display");
-
-function appendToDisplay(input){
-    display.value += input;
-    display.scrollLeft = display.scrollWidth;
-}
-
-function clearDisplay(){
-    display.value = "";
-    display.scrollLeft = 0;
-}
-
-function calculate(){
-    try{
-        display.value = eval(display.value);
-        display.scrollLeft = display.scrollWidth;
-    }
-    catch(error){
-        display.value = "Error";
-    }
-}
-
-function clearAppendToDisplay() {
-    display.value = display.value.slice(0, -1);
-    display.scrollLeft = display.scrollWidth;
-}
-
-
+// parenthèses intelligentes ✅
 function addParenthesis() {
-    const text = display.textContent;
-    const open = (text.match(/\(/g) || []).length;
-    const close = (text.match(/\)/g) || []).length;
+    const text = display.value;
 
-    if (open === close || text.endsWith("(")) {
-        appendToDisplay("(");
-    } else {
-        appendToDisplay(")");
+    const openCount = (text.match(/\(/g) || []).length;
+    const closeCount = (text.match(/\)/g) || []).length;
+
+    if (text === "0") {
+        display.value = "(";
+        return;
     }
+
+    if (openCount === closeCount || text.endsWith("(")) {
+        display.value += "(";
+    } else if (openCount > closeCount) {
+        display.value += ")";
+    }
+
+    display.scrollLeft = display.scrollWidth;
 }
