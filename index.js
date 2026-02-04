@@ -74,3 +74,16 @@ function clearAppendToDisplay() {
     display.value = display.value.slice(0, -1);
     display.scrollLeft = display.scrollWidth;
 }
+
+
+function addParenthesis() {
+    const text = display.textContent;
+    const open = (text.match(/\(/g) || []).length;
+    const close = (text.match(/\)/g) || []).length;
+
+    if (open === close || text.endsWith("(")) {
+        appendToDisplay("(");
+    } else {
+        appendToDisplay(")");
+    }
+}
