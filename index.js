@@ -49,22 +49,22 @@ function sqrt() {
 }
 
 // parenthèses intelligentes ✅
-function addParenthesis() {
-    const text = display.value;
+// function addParenthesis() {
+//     const text = display.value;
 
-    const openCount = (text.match(/\(/g) || []).length;
-    const closeCount = (text.match(/\)/g) || []).length;
+//     const openCount = (text.match(/\(/g) || []).length;
+//     const closeCount = (text.match(/\)/g) || []).length;
 
-    if (text === "0") {
-        display.value = "(";
-        return;
-    }
+//     if (text === "0") {
+//         display.value = "(";
+//         return;
+//     }
 
-    if (openCount === closeCount || text.endsWith("(")) {
-        display.value += "(";
-    } else if (openCount > closeCount) {
-        display.value += ")";
-    }
+//     if (openCount === closeCount || text.endsWith("(")) {
+//         display.value += "(";
+//     } else if (openCount > closeCount) {
+//         display.value += ")";
+//     }
 
-    display.scrollLeft = display.scrollWidth;
-}
+//     display.scrollLeft = display.scrollWidth;
+// }
