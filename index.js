@@ -24,10 +24,18 @@ function clearAppendToDisplay() {
 
 function calculate(){
     try{
-        display.value = eval(display.value);
-        display.scrollLeft = display.scrollWidth;
+        let expression = display.value;
+        let result = eval(expression);
+
+        display.value = result;
+
+        console.log("Expression:", expression);
+        console.log("Result:", result);
+
+        addHistory(expression, result);
     }
-    catch{
+    catch(error){
+        console.log(error);
         display.value = "Error";
     }
 }
@@ -48,23 +56,31 @@ function sqrt() {
     }
 }
 
-// parenthèses intelligentes ✅
-// function addParenthesis() {
-//     const text = display.value;
+/*-----------------------
+ history
+------------------------*/
 
-//     const openCount = (text.match(/\(/g) || []).length;
-//     const closeCount = (text.match(/\)/g) || []).length;
+let history = [];
 
-//     if (text === "0") {
-//         display.value = "(";
-//         return;
-//     }
+function addHistory(expression, result) {
+    history.push(`${expression} = ${result}`);
+    updateHistory();
+}
 
-//     if (openCount === closeCount || text.endsWith("(")) {
-//         display.value += "(";
-//     } else if (openCount > closeCount) {
-//         display.value += ")";
-//     }
+function updateHistory() {
+    const historyDiv = document.getElementById("history");
 
-//     display.scrollLeft = display.scrollWidth;
-// }
+    if (!historyDiv) {
+        console.error("Element #history introuvable");
+        return;
+    }
+
+    historyDiv.innerHTML = "";
+
+    history.forEach(item => {
+        let p = document.createElement("p");
+        p.textContent = item;
+        historyDiv.appendChild(p);
+    });
+}
+

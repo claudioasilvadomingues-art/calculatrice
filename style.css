@@ -1,23 +1,31 @@
 *{
     box-sizing: border-box;
 }
-body {
+
+
+#calculator{
+    font-family:Arial, sans-serif ;
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 15px;
+    width: 500px;
+    overflow: hidden;
+    
+}
+
+.body{
     margin: 0;
     display: flex;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
     height: 100vh;
     background-color: hsl(0, 0%, 95%);
+
+    
 }
 
-#calculator{
-     font-family:Arial, sans-serif ;
-     background-color: hsl(0, 0%, 15%);
-     border-radius: 15px;
-    width: 500px;
-    overflow: hidden;
-
-}
+/* ------------------------
+    display screen 
+------------------------*/
 #display{
     width: 100%;
     padding: 20px;
@@ -30,12 +38,10 @@ body {
     overflow: hidden;   
 
 }
-#keys{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 25px;
-}
+
+/* ---------------------
+    BUTTONS
+-----------------------*/
 
 button{
     width: 100px;
@@ -47,37 +53,52 @@ button{
     font-size: 3rem;
     font-weight: bold;
     cursor: pointer;
-
 }
+
 button:hover{
     background-color: hsl(0, 0%, 40%);
 }
+
 button:active{
     background-color: hsl(0, 0%, 50%);
 }
+
+#keys{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 25px;
+}
+
 .operator-btn{
     background-color: hsl(35, 100%, 55%);
 }
+
 .operator-btn:hover{
     background-color: hsl(35, 100%, 65%);
 }
+
 .operator-btn:active{
     background-color: hsl(35, 100%, 75%);
 }
 
 
-
-
-/*MORE BUTTONS  */
+/*--------------------
+    MORE BUTTON  
+--------------------*/
 
 #advanced-keys {
     display: grid;
     gap: 5px;
-   padding: 5px;
-   background-color: hsl(0, 0%, 15%);
+    padding: 5px;
+    background-color: hsl(0, 0%, 15%);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     margin-top:71px;
+}
+
+#More{
+    font-size: 2rem;
 }
 
 .hidden {
@@ -85,7 +106,48 @@ button:active{
 }
 
 
-#More{
-    font-size: 2rem;
+
+
+/* ---------------------
+    HISTORY
+-----------------------*/
+
+#history {
+    background-color: hsla(0, 0%, 25%, 0.507);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    margin-top: 20px;
+    height: 400px;
+    overflow-y: auto;
+
+    display: block; /* 👈 important */
 }
 
+
+
+/*---------------------
+ History section 
+ ----------------------*/
+.history {
+    background-color: hsl(0, 0%, 25%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    margin-top: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.history p {
+    margin: 10px 0;
+    padding: 5px;
+    border-bottom: 1px solid hsl(0, 0%, 35%);
+}
+
+.history p:last-child {
+    border-bottom: none;
+}
