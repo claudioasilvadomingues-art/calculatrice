@@ -82,5 +82,15 @@ function updateHistory() {
         p.textContent = item;
         historyDiv.appendChild(p);
     });
+    historyDiv.scrollTop = historyDiv.scrollHeight;
 }
 
+/*-----------------
+clear history
+------------------*/
+document.getElementById("delhist").addEventListener("click", clearHistory);
+
+function clearHistory() {
+    history = [];          // vide le tableau
+    updateHistory();       // met à jour l'affichage
+}

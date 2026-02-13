@@ -82,6 +82,10 @@ button:active{
     background-color: hsl(35, 100%, 75%);
 }
 
+#delhist{
+    font-size: 1.5rem;
+}
+
 
 /*--------------------
     MORE BUTTON  
